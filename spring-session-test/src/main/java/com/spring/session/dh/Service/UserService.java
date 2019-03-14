@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-    @Cacheable(value = "users")
+    @Cacheable("usertypes")
     public User getUser(){
         User user = new User() ;
         user.setId(123L);
@@ -24,4 +24,6 @@ public class UserService {
         System.out.println("若下面没出现“无缓存的时候调用”字样且能打印出数据表示测试成功");
         return user ;
     }
+
+
 }
