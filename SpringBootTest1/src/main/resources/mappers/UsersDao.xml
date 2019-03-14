@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.test1.dao.UsersDao">
+
+    <insert id="insertUsersEntity" parameterType="com.test1.entity.UsersEntity">
+        insert into users (user_name,create_time,update_time) values (#{userName},now(),now())
+    </insert>
+
+    <select id="getUsersEntity" resultType="com.test1.entity.UsersEntity">
+        select id,user_name userName,create_time createTime,update_time updateTime from users
+    </select>
+
+    <select id="getUsersEntityById" resultType="com.test1.entity.UsersEntity">
+         select id,user_name userName,create_time createTime,update_time updateTime from users where id = #{id}
+    </select>
+</mapper>
