@@ -1,0 +1,49 @@
+#配置服务信息
+server:
+  address: localhost
+  context-path: /demoService
+  port: 8080
+spring:
+  profiles.active: dev
+
+---
+spring:
+  profiles: dev
+swagger:
+    enable: true
+security:
+  basic:
+    path: /swagger-ui.html
+    enabled: true
+  user:
+    name: lifeccp
+    password: lifeccp
+---
+
+---
+spring:
+  profiles: test
+swagger:
+    enable: true
+security:
+  basic:
+    path: /swagger-ui.html
+    enabled: true
+  user:
+    name: lifeccp
+    password: lifeccp
+---
+
+---
+spring:
+  profiles: prod
+swagger:
+    enable: true
+security:
+  basic:
+    path: /swagger-ui.html
+    enabled: true
+  user:
+    name: lifeccp
+    password: lifeccp
+---
