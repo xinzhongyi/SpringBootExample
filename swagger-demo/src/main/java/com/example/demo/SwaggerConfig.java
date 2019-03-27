@@ -13,6 +13,8 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,6 +59,16 @@ public class SwaggerConfig {
                 .responseModel(new ModelRef("string")).build());
 
         return errorList;
+    }
+
+    @Bean(value = "publicApi")
+    public Docket publicApi() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.example.demo"))
+                .paths(PathSelectors.ant("/notSessionId/*"))
+                .build().groupName("无需token验证").ignoredParameterTypes(HttpServletResponse.class, HttpServletRequest.class);
     }
 
     private ApiInfo apiInfo() {
