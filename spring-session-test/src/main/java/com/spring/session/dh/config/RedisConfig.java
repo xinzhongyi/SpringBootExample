@@ -16,6 +16,8 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 
 import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -51,6 +53,10 @@ public class RedisConfig extends CachingConfigurerSupport {
         RedisCacheManager rcm = new RedisCacheManager(redisTemplate);
         //设置缓存过期时间
         //rcm.setDefaultExpiration(60);//秒
+        //配置缓存的过期时间
+        Map expires = new HashMap();
+        expires.put("usertypes",10L);
+        rcm.setExpires(expires);
         return rcm;
     }
 
