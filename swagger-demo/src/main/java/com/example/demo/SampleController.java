@@ -38,7 +38,7 @@ public class SampleController {
             @ApiResponse(code = 404, message = "请求路径不存在"),
             @ApiResponse(code = 500, message = "服务器内部错误")
     })
-    ResponseEntity<List<User>> home(@PathVariable("id")String id,@RequestParam("name")String name){
+    ResponseEntity<List<UserInfoDTO>> home(@PathVariable("id")String id,@RequestParam("name")String name){
 //        try{
 //            if(Integer.parseInt(id) > 10){
 //                return "number" ;
@@ -47,7 +47,7 @@ public class SampleController {
 //            return "error" ;
 //        }
 //        return "helloworld" ;
-        List<User> list = new ArrayList<User>(){{new User();}} ;
+        List<UserInfoDTO> list = new ArrayList<UserInfoDTO>(){{new UserInfoDTO();}} ;
         ResponseEntity entity = new ResponseEntity() ;
         entity.setData(list);
         return entity ;
